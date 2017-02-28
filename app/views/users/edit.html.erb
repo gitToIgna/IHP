@@ -1,5 +1,5 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<h1>Update your profile & pickup information</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -18,12 +18,60 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.submit "Save changes", class: "btn btn-primary" %>
-    <% end %>
+      <div class="gravatar_edit">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank">Change your picture profile</a>
+      </div>
 
-    <div class="gravatar_edit">
-      <%= gravatar_for @user %>
-      <a href="http://gravatar.com/emails" target="_blank">change</a>
-    </div>
+      <%= f.submit "Save profile changes", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
+
+</br></br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="panel panel-primary">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Pickup information</h2>
+            <span>What is your availability to deliver your order?</span>
+            <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages' %>
+
+            <%= f.label :address %>
+            <%= f.text_field :address, class: 'form-control' %>
+
+            <%= f.label :start_date %>
+            <%= f.date_field :start_date, class: 'form-control' %>
+
+            <%= f.label :end_date %>  
+            <%= f.date_field :end_date, class: 'form-control' %>
+
+            <%= f.label :start_time %>
+            <%= f.time_field :start_time, class: 'form-control' %>
+
+            <%= f.label :end_time %>
+            <%= f.time_field :end_time, class: 'form-control' %>
+
+            <%= f.label :end_time %>
+            <%= f.time_field :end_time, class: 'form-control' %>
+
+            <%= f.label :details %>
+            <%= f.text_area :details, class: 'form-control' %>
+
+            <%= f.submit "Save pickup changes", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <div id="map" class="edit-map leaflet-container leaflet-fade-anim" tabindex="0" style="position: relative;"></div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
