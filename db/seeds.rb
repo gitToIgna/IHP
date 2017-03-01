@@ -13,3 +13,11 @@ User.create!(name:  "Example User", email: "example@railstutorial.org", password
   password = "password"
   User.create!(name:  name, email: email, password: password, password_confirmation: password, activated: true, activated_at: Time.zone.now)
 end
+
+users = User.order(:created_at).take(6)
+50.times do
+	name = Faker::Lorem.words(5)
+	description = Faker::Lorem.sentence(5)
+	expiration = Faker::Date.backward(14)
+	users.each { |user| user.products.create!(name: name, description: description, expiration: expiration) }
+end

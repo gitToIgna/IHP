@@ -1,0 +1,15 @@
+<li id="product-<%= product.id %>">
+  <%= link_to gravatar_for(product.user, size: 50), product.user %>
+  <span class="user"><%= link_to product.user.name, product.user %></span>
+  <span class="description">Product name: <%= product.name %></span>
+  <span class="description">Product's category: <%= product.tag_list %></span>
+  <span class="description">Product description: <%= product.description %></span>
+  <span class="description">Product expiration: <%= product.expiration.strftime("%d/%m/%Y") %></span>
+  <%= image_tag product.picture.url if product.picture? %>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(product.created_at) %> ago.
+  </span>
+</li>
+
+
+

@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+      <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
       <%= f.text_field :name, class: 'form-control' %>
@@ -39,7 +39,7 @@
             <h2>Pickup information</h2>
             <span>What is your availability to deliver your order?</span>
             <%= form_for(@user) do |f| %>
-            <%= render 'shared/error_messages' %>
+            <%= render 'shared/error_messages', object: f.object %>
 
             <%= f.label :address %>
             <%= f.text_field :address, class: 'form-control' %>

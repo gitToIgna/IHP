@@ -1,0 +1,25 @@
+<%= form_for(@product, html: { multipart: true }) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_field :name, placeholder: "Product name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tag_list, "Tags (separated by commas)" %>
+    <%= f.text_field :tag_list %>
+  </div>
+
+  Expiration product date:
+  <div class="form-control">
+  	<%= f.date_field :expiration %>
+  </div>
+  <div class="field">
+    <%= f.text_area :description, placeholder: "Describe your new product..." %>
+  </div>
+
+  <span class="picture">
+    <%= f.file_field :picture %>
+  </span>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
